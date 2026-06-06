@@ -26,7 +26,7 @@
       `<a href="${href}" class="${page === key ? "active" : ""}">${esc(n[key])}</a>`;
     return `
     <header class="site-header"><div class="wrap"><nav class="nav">
-      <a class="logo" href="/">ilk<span class="dot">.ai</span></a>
+      <a class="logo" href="/" aria-label="ilk.ai"><img src="/assets/img/logo.png" alt="ilk.ai" /></a>
       <button class="nav-toggle" aria-label="Menu" data-toggle>☰</button>
       <div class="nav-links" id="navlinks">
         ${link("/", "home")}
@@ -42,8 +42,8 @@
     const t = S.ui[lang];
     return `
     <footer class="site-footer" id="contact"><div class="wrap"><div class="foot">
-      <div>
-        <div class="brand">ilk<span style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">.ai</span></div>
+      <div class="foot-brand">
+        <img src="/assets/img/logo.png" alt="ilk.ai" class="foot-logo" />
         <div class="tag">${esc(t.footerTag)}</div>
       </div>
       <div style="text-align:right">
