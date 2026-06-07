@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-jakarta);
+  --font-sans: var(--font-inter);
+
+  /* Açık premium palet — sofistike nötr + indigo accent */
+  --color-paper: #fafafa;       /* zinc-50 zemin */
+  --color-paper-2: #f4f4f5;     /* zinc-100 alt bölüm */
+  --color-card: #ffffff;
+  --color-ink: #18181b;         /* zinc-900 */
+  --color-ink-soft: #52525b;    /* zinc-600 */
+  --color-ink-faint: #a1a1aa;   /* zinc-400 */
+  --color-line: #e4e4e7;        /* zinc-200 */
+  --color-accent: #4f46e5;      /* indigo-600 */
+  --color-accent-deep: #4338ca; /* indigo-700 */
+  --color-accent-wash: #eef2ff; /* indigo-50 */
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--color-accent); color: #fff; }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display), system-ui, sans-serif; }
+  /* Glassmorphism 2.0 — sticky header */
+  .glass {
+    background: rgba(250, 250, 250, 0.72);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+  }
+  .shadow-soft { box-shadow: 0 1px 2px rgba(24,24,27,.04), 0 8px 30px rgba(24,24,27,.06); }
+  .shadow-soft-lg { box-shadow: 0 2px 4px rgba(24,24,27,.05), 0 18px 50px -20px rgba(24,24,27,.18); }
+  .glow-accent { box-shadow: 0 0 0 1px rgba(79,70,229,.12), 0 20px 60px -28px rgba(79,70,229,.45); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

@@ -1,127 +1,142 @@
-/* ilk.ai — site içeriği (TR + EN). Tüm metin, link ve görsel tek yerde.
-   Düzenleme: sadece bu dosyayı değiştir; app.js render eder.
-   NOT: Bilinçli olarak maliyet/birim ekonomisi YOK ve işleyiş yüzeysel
-   tutulmuştur (üretim yöntemi ifşa edilmez). */
+/* ilk.ai — içerik sözlüğü (TR + EN). Tüm metin/link/görsel tek yerde.
+   Kurallar: maliyet/birim ekonomisi YOK; işleyiş yüzeysel (üretim yöntemi ifşa edilmez). */
 
-window.SITE = {
+export type Lang = "tr" | "en";
+
+export const SITE = {
   brand: "ilk.ai",
-  domain: "ilk.ai",
   email: "ilkay@demiralay.net",
   year: 2026,
+};
 
-  links: {
-    wsdYouTube: "https://youtube.com/@worldsportdaily",
-    wsdInstagram: "https://instagram.com/world_sport_daily",
-    ostomyfanSite: "https://ostomyfan.com",
-    dreamercellYouTube: "https://www.youtube.com/@dreamercell",
+export const LINKS: Record<string, string> = {
+  wsdYouTube: "https://youtube.com/@worldsportdaily",
+  wsdInstagram: "https://instagram.com/world_sport_daily",
+  ostomyfanSite: "https://ostomyfan.com",
+  dreamercellYouTube: "https://www.youtube.com/@dreamercell",
+};
+
+export const ASSETS: Record<string, { avatar: string; banner: string }> = {
+  wsd: { avatar: "/img/projects/wsd-avatar.jpg", banner: "/img/projects/wsd-banner.jpg" },
+  osto: { avatar: "/img/projects/osto-avatar.jpg", banner: "/img/projects/osto-banner.jpg" },
+  dreamercell: { avatar: "/img/projects/dreamercell-avatar.jpg", banner: "/img/projects/dreamercell-banner.jpg" },
+};
+
+export const UI = {
+  tr: {
+    nav: { home: "Ana Sayfa", projects: "Projeler", contact: "İletişim" },
+    langLabel: "EN",
+    backHome: "← Ana sayfa",
+    contactCta: "İletişime geç",
+    footerTag: "Markalar için içerik üreten yapay zeka stüdyosu.",
+    footerRights: "Tüm hakları saklıdır.",
+    live: "Canlı",
+    viewDetails: "Detayı gör",
+    approach: "Yaklaşım",
+    portfolio: "Portföy",
+    value: "Değer",
   },
-
-  // Proje görselleri (gerçek sosyal medya avatar + banner)
-  assets: {
-    wsd: { avatar: "/assets/img/projects/wsd-avatar.jpg", banner: "/assets/img/projects/wsd-banner.jpg" },
-    osto: { avatar: "/assets/img/projects/osto-avatar.jpg", banner: "/assets/img/projects/osto-banner.jpg" },
-    dreamercell: { avatar: "/assets/img/projects/dreamercell-avatar.jpg", banner: "/assets/img/projects/dreamercell-banner.jpg" },
+  en: {
+    nav: { home: "Home", projects: "Projects", contact: "Contact" },
+    langLabel: "TR",
+    backHome: "← Home",
+    contactCta: "Get in touch",
+    footerTag: "An AI studio that creates content for brands.",
+    footerRights: "All rights reserved.",
+    live: "Live",
+    viewDetails: "View details",
+    approach: "Approach",
+    portfolio: "Portfolio",
+    value: "Value",
   },
+};
 
-  ui: {
-    tr: {
-      nav: { home: "Ana Sayfa", wsd: "World Sport Daily", osto: "ostomyfan", dreamercell: "dreamercell", contact: "İletişim" },
-      langLabel: "EN",
-      backHome: "← Ana sayfa",
-      contactCta: "İletişime geç",
-      footerTag: "Markalar için içerik üreten yapay zeka stüdyosu.",
-      footerRights: "Tüm hakları saklıdır.",
-      liveTag: "Canlı",
-    },
-    en: {
-      nav: { home: "Home", wsd: "World Sport Daily", osto: "ostomyfan", dreamercell: "dreamercell", contact: "Contact" },
-      langLabel: "TR",
-      backHome: "← Home",
-      contactCta: "Get in touch",
-      footerTag: "An AI studio that creates content for brands.",
-      footerRights: "All rights reserved.",
-      liveTag: "Live",
-    },
+export const HOME = {
+  tr: {
+    heroKicker: "ilk.ai · yapay zeka içerik stüdyosu",
+    heroTitle: "Markalar için içerik üreten bir yapay zeka stüdyosu.",
+    heroSub:
+      "Fikirden yayına kadar tüm süreci biz yürütüyoruz. Sizin işiniz hikâyenizi anlatmak; üretimi, tutarlılığı ve büyümeyi bize bırakın.",
+    heroPrimary: "Projeleri gör",
+    heroSecondary: "İletişim",
+    heroNote: "3 marka canlı yayında",
+    howTitle: "Ne yapıyoruz",
+    howBody:
+      "Her marka için baştan sona bir içerik dünyası kuruyoruz: kimlik, format ve sesi tanımlıyor, düzenli içeriği üretiyor ve doğru kanallarda yayınlıyoruz. Tek tek videolar değil; kendi başına dönen, tutarlı bir yayın akışı.",
+    pillars: [
+      { title: "Fikir & yön", body: "Her markaya özel konsept, görsel kimlik ve içerik takvimi." },
+      { title: "Üretim", body: "Senaryodan görsele kadar içeriğin tamamı; siz sadece onaylıyorsunuz." },
+      { title: "Yayın & büyüme", body: "Doğru platformda, doğru ritimde, düzenli yayın ve takip." },
+    ],
+    proofTitle: "Canlı projeler",
+    proofBody: "Üç marka şu anda bizim yürüttüğümüz akışla üretimde ve yayında.",
+    whyTitle: "Neden ilk.ai",
+    whyBody:
+      "Çoğu marka içerikte tıkanır: zaman yok, tutarlılık yok, ekip pahalı. Biz bunu bir sisteme çeviriyoruz. Aldığınız şey ucuz içerik değil; markanızı her gün besleyen, ölçeklenebilen ve sizi düşündürmeyen bir yayın motoru.",
+    whyPoints: [
+      { k: "Tutarlılık", v: "Marka her gün, aynı kalitede sahnede." },
+      { k: "Hız", v: "Haftalar süren süreç günlere iner." },
+      { k: "Ölçek", v: "Tek marka da, on marka da aynı kolaylıkla." },
+      { k: "Odak", v: "Siz işinize bakın; üretim bizde." },
+    ],
+    ctaTitle: "Markanızı konuşalım",
+    ctaBody: "İş birliği, ortaklık veya bir pilot proje için bize ulaşın.",
   },
-
-  /* ===================== ANA SAYFA ===================== */
-  home: {
-    tr: {
-      heroKicker: "ilk.ai · yapay zeka içerik stüdyosu",
-      heroTitle: "Markalar için içerik üreten bir yapay zeka stüdyosu.",
-      heroSub:
-        "Fikirden yayına kadar tüm süreci biz yürütüyoruz. Sizin işiniz hikâyenizi anlatmak; üretimi, tutarlılığı ve büyümeyi bize bırakın.",
-      heroPrimary: "Projeleri gör",
-      heroSecondary: "İletişim",
-      heroNote: "Şu an 3 marka canlı yayında.",
-
-      // Yüzeysel "ne yapıyoruz" — teknik reçete YOK
-      howTitle: "Ne yapıyoruz",
-      howBody:
-        "Her marka için baştan sona bir içerik dünyası kuruyoruz: kimlik, format ve sesi tanımlıyor, düzenli içeriği üretiyor ve doğru kanallarda yayınlıyoruz. Tek tek videolar değil; kendi başına dönen, tutarlı bir yayın akışı.",
-      pillars: [
-        { title: "Fikir & yön", body: "Her markaya özel konsept, görsel kimlik ve içerik takvimi." },
-        { title: "Üretim", body: "Senaryodan görsele kadar içeriğin tamamı; siz sadece onaylıyorsunuz." },
-        { title: "Yayın & büyüme", body: "Doğru platformda, doğru ritimde, düzenli yayın ve takip." },
-      ],
-
-      proofTitle: "Canlı projeler",
-      proofBody: "Üç marka şu anda bizim yürüttüğümüz akışla üretimde ve yayında.",
-
-      whyTitle: "Neden ilk.ai",
-      whyBody:
-        "Çoğu marka içerikte tıkanır: zaman yok, tutarlılık yok, ekip pahalı. Biz bunu bir sisteme çeviriyoruz. Aldığınız şey ucuz içerik değil; markanızı her gün besleyen, ölçeklenebilen ve sizi düşündürmeyen bir yayın motoru.",
-      whyPoints: [
-        { k: "Tutarlılık", v: "Marka her gün, aynı kalitede sahnede." },
-        { k: "Hız", v: "Haftalar süren süreç günlere iner." },
-        { k: "Ölçek", v: "Tek marka da, on marka da aynı kolaylıkla." },
-        { k: "Odak", v: "Siz işinize bakın; üretim bizde." },
-      ],
-
-      ctaTitle: "Markanızı konuşalım",
-      ctaBody: "İş birliği, ortaklık veya bir pilot proje için bize ulaşın.",
-    },
-
-    en: {
-      heroKicker: "ilk.ai · AI content studio",
-      heroTitle: "An AI studio that builds content for brands.",
-      heroSub:
-        "We run the whole journey, from idea to publishing. Your job is to tell your story; leave production, consistency and growth to us.",
-      heroPrimary: "View projects",
-      heroSecondary: "Contact",
-      heroNote: "3 brands live right now.",
-
-      howTitle: "What we do",
-      howBody:
-        "For each brand we build a complete content world: we define identity, format and voice, produce a steady stream of content, and publish on the right channels. Not one-off videos, but a consistent publishing engine that runs on its own.",
-      pillars: [
-        { title: "Idea & direction", body: "Bespoke concept, visual identity and content calendar per brand." },
-        { title: "Production", body: "Everything from script to visuals; you simply approve." },
-        { title: "Publish & grow", body: "The right platform, the right rhythm, steady publishing and follow-through." },
-      ],
-
-      proofTitle: "Live projects",
-      proofBody: "Three brands are producing and publishing right now through the flow we run.",
-
-      whyTitle: "Why ilk.ai",
-      whyBody:
-        "Most brands stall on content: no time, no consistency, teams are expensive. We turn it into a system. What you get isn't cheap content, it's a publishing engine that feeds your brand every day, scales, and never makes you think about it.",
-      whyPoints: [
-        { k: "Consistency", v: "Your brand on stage every day, same quality." },
-        { k: "Speed", v: "What takes weeks now takes days." },
-        { k: "Scale", v: "One brand or ten, with the same ease." },
-        { k: "Focus", v: "You run your business; production is on us." },
-      ],
-
-      ctaTitle: "Let's talk about your brand",
-      ctaBody: "Reach out for collaboration, partnership, or a pilot project.",
-    },
+  en: {
+    heroKicker: "ilk.ai · AI content studio",
+    heroTitle: "An AI studio that builds content for brands.",
+    heroSub:
+      "We run the whole journey, from idea to publishing. Your job is to tell your story; leave production, consistency and growth to us.",
+    heroPrimary: "View projects",
+    heroSecondary: "Contact",
+    heroNote: "3 brands live right now",
+    howTitle: "What we do",
+    howBody:
+      "For each brand we build a complete content world: we define identity, format and voice, produce a steady stream of content, and publish on the right channels. Not one-off videos, but a consistent publishing engine that runs on its own.",
+    pillars: [
+      { title: "Idea & direction", body: "Bespoke concept, visual identity and content calendar per brand." },
+      { title: "Production", body: "Everything from script to visuals; you simply approve." },
+      { title: "Publish & grow", body: "The right platform, the right rhythm, steady publishing and follow-through." },
+    ],
+    proofTitle: "Live projects",
+    proofBody: "Three brands are producing and publishing right now through the flow we run.",
+    whyTitle: "Why ilk.ai",
+    whyBody:
+      "Most brands stall on content: no time, no consistency, teams are expensive. We turn it into a system. What you get isn't cheap content, it's a publishing engine that feeds your brand every day, scales, and never makes you think about it.",
+    whyPoints: [
+      { k: "Consistency", v: "Your brand on stage every day, same quality." },
+      { k: "Speed", v: "What takes weeks now takes days." },
+      { k: "Scale", v: "One brand or ten, with the same ease." },
+      { k: "Focus", v: "You run your business; production is on us." },
+    ],
+    ctaTitle: "Let's talk about your brand",
+    ctaBody: "Reach out for collaboration, partnership, or a pilot project.",
   },
+};
 
-  /* Proje kartları ana sayfada (dil-bağımsız yapı, metin diller içinde) */
-  projectOrder: ["wsd", "osto", "dreamercell"],
+export type ProjectKey = "wsd" | "osto" | "dreamercell";
+export const PROJECT_ORDER: ProjectKey[] = ["wsd", "osto", "dreamercell"];
+export const SLUG: Record<ProjectKey, string> = {
+  wsd: "world-sport-daily",
+  osto: "ostomyfan",
+  dreamercell: "dreamercell",
+};
+export const KEY_BY_SLUG: Record<string, ProjectKey> = {
+  "world-sport-daily": "wsd",
+  ostomyfan: "osto",
+  dreamercell: "dreamercell",
+};
 
-  /* ===================== WORLD SPORT DAILY ===================== */
+type ProjLang = {
+  cardTag: string; cardDesc: string;
+  kicker: string; title: string; sub: string;
+  ctaPrimary: string; ctaSecondary?: string;
+  whatTitle: string; whatBody: string;
+  highlightsTitle: string; highlights: { t: string; d: string }[];
+  proofTitle: string; proofLinks: { label: string; key: string }[];
+};
+
+export const PROJECTS: Record<ProjectKey, { assetKey: string; tr: ProjLang; en: ProjLang }> = {
   wsd: {
     assetKey: "wsd",
     tr: {
@@ -173,8 +188,6 @@ window.SITE = {
       ],
     },
   },
-
-  /* ===================== OSTOMYFAN ===================== */
   osto: {
     assetKey: "osto",
     tr: {
@@ -218,8 +231,6 @@ window.SITE = {
       proofLinks: [{ label: "ostomyfan.com", key: "ostomyfanSite" }],
     },
   },
-
-  /* ===================== DREAMERCELL ===================== */
   dreamercell: {
     assetKey: "dreamercell",
     tr: {
