@@ -4,7 +4,6 @@
   const S = window.SITE;
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-  // dil: localStorage > tarayıcı > tr
   function getLang() {
     const saved = localStorage.getItem("ilkai_lang");
     if (saved === "tr" || saved === "en") return saved;
@@ -19,19 +18,19 @@
     render();
   }
 
-  /* ---------- ortak parçalar ---------- */
+  /* ---------- ortak ---------- */
   function header(page) {
     const t = S.ui[lang], n = t.nav, other = lang === "tr" ? "en" : "tr";
-    const link = (href, key) =>
-      `<a href="${href}" class="${page === key ? "active" : ""}">${esc(n[key])}</a>`;
+    const link = (href, key) => `<a href="${href}" class="${page === key ? "active" : ""}">${esc(n[key])}</a>`;
     return `
     <header class="site-header"><div class="wrap"><nav class="nav">
-      <a class="logo" href="/" aria-label="ilk.ai"><img src="/assets/img/logo.png" alt="ilk.ai" /></a>
+      <a class="logo" href="/" aria-label="ilk.ai"><img src="/assets/img/logo-dark.png" alt="ilk.ai" /></a>
       <button class="nav-toggle" aria-label="Menu" data-toggle>☰</button>
       <div class="nav-links" id="navlinks">
         ${link("/", "home")}
         ${link("/world-sport-daily", "wsd")}
         ${link("/ostomyfan", "osto")}
+        ${link("/dreamercell", "dreamercell")}
         <a href="#contact">${esc(n.contact)}</a>
         <button class="lang-btn" data-lang="${other}">${esc(t.langLabel)}</button>
       </div>
@@ -43,20 +42,34 @@
     return `
     <footer class="site-footer" id="contact"><div class="wrap"><div class="foot">
       <div class="foot-brand">
-        <img src="/assets/img/logo.png" alt="ilk.ai" class="foot-logo" />
+        <img src="/assets/img/logo-dark.png" alt="ilk.ai" class="foot-logo" />
         <div class="tag">${esc(t.footerTag)}</div>
       </div>
-      <div style="text-align:right">
-        <div><a class="mail" href="mailto:${esc(S.email)}">${esc(S.email)}</a></div>
+      <div class="right">
+        <a class="mail" href="mailto:${esc(S.email)}">${esc(S.email)}</a>
         <div class="small">© ${S.year} ${esc(S.brand)} — ${esc(t.footerRights)}</div>
       </div>
     </div></div></footer>`;
   }
 
-  const statGrid = (stats) =>
-    `<div class="stats">${stats
-      .map((s) => `<div class="stat reveal"><div class="v grad">${esc(s.value)}</div><div class="l">${esc(s.label)}</div></div>`)
-      .join("")}</div>`;
+  /* ---------- proje kartı (ana sayfa) ---------- */
+  function projectCard(key) {
+    const p = S[key], d = p[lang], a = S.assets[p.assetKey], t = S.ui[lang];
+    const href = "/" + ({ wsd: "world-sport-daily", osto: "ostomyfan", dreamercell: "dreamercell" }[key]);
+    return `
+      <a class="project-card reveal" href="${href}">
+        <div class="pc-media">
+          <img class="banner" src="${a.banner}" alt="${esc(d.title)} banner" loading="lazy" />
+          <img class="pc-avatar" src="${a.avatar}" alt="${esc(d.title)}" loading="lazy" />
+        </div>
+        <div class="pc-body">
+          <div class="pc-tagrow"><span class="pc-tag">${esc(d.cardTag)}</span><span class="pc-live">${esc(t.liveTag)}</span></div>
+          <h3>${esc(d.title)}</h3>
+          <p class="pc-desc">${esc(d.cardDesc)}</p>
+          <span class="more">${lang === "tr" ? "Detayı gör" : "View details"} →</span>
+        </div>
+      </a>`;
+  }
 
   /* ---------- ANA SAYFA ---------- */
   function renderHome() {
@@ -64,187 +77,110 @@
     return `
     ${header("home")}
     <main>
-      <section class="hero"><div class="wrap">
-        <span class="kicker">${esc(d.heroKicker)}</span>
-        <h1>${esc(d.heroTitle).replace(/(AI)/, '<span class="grad">$1</span>')}</h1>
-        <p class="sub">${esc(d.heroSub)}</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="/world-sport-daily">${esc(d.heroPrimary)}</a>
-          <a class="btn btn-ghost" href="#contact">${esc(d.heroSecondary)}</a>
+      <section class="hero"><div class="wrap"><div class="hero-grid">
+        <div>
+          <span class="kicker">${esc(d.heroKicker)}</span>
+          <h1>${esc(d.heroTitle)}</h1>
+          <p class="sub">${esc(d.heroSub)}</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">${esc(d.heroPrimary)}</a>
+            <a class="btn btn-ghost" href="#contact">${esc(d.heroSecondary)}</a>
+          </div>
         </div>
-        <div class="hero-note">${esc(d.heroNote)}</div>
-      </div></section>
+        <div class="hero-aside">
+          <div class="hero-note"><span class="dot"></span><strong>${esc(d.heroNote)}</strong></div>
+        </div>
+      </div></div></section>
 
       <section class="section"><div class="wrap">
-        ${statGrid(d.stats)}
-      </div></section>
-
-      <section class="section section-soft"><div class="wrap">
-        <span class="eyebrow reveal">${esc(d.problemTitle)}</span>
-        <h2 class="reveal">${esc(d.problemTitle)}</h2>
-        <p class="lead reveal">${esc(d.problemBody)}</p>
-      </div></section>
-
-      <section class="section"><div class="wrap">
+        <span class="eyebrow reveal">${lang === "tr" ? "Yaklaşım" : "Approach"}</span>
         <h2 class="reveal">${esc(d.howTitle)}</h2>
         <p class="lead reveal">${esc(d.howBody)}</p>
-        <div class="grid grid-3">
-          ${d.pipeline
-            .map(
-              (p) =>
-                `<div class="feature reveal"><div class="ic">${esc(p.icon)}</div><h4>${esc(p.title)}</h4><p>${esc(p.body)}</p></div>`
-            )
-            .join("")}
+        <div class="pillars reveal">
+          ${d.pillars.map((p, i) => `<div class="pillar"><span class="pn">0${i + 1}</span><h3>${esc(p.title)}</h3><p>${esc(p.body)}</p></div>`).join("")}
         </div>
       </div></section>
 
-      <section class="section section-soft"><div class="wrap">
+      <section class="section section-alt" id="projects"><div class="wrap">
+        <span class="eyebrow reveal">${lang === "tr" ? "Portföy" : "Portfolio"}</span>
         <h2 class="reveal">${esc(d.proofTitle)}</h2>
         <p class="lead reveal">${esc(d.proofBody)}</p>
-        <div class="grid grid-2">
-          ${d.projects
-            .map(
-              (p) =>
-                `<a class="card project reveal" href="${p.href}">
-                  <span class="tag">${esc(p.tag)}</span>
-                  <h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>
-                  <span class="more">${esc(p.cta)}</span>
-                </a>`
-            )
-            .join("")}
+        <div class="projects">
+          ${S.projectOrder.map(projectCard).join("")}
         </div>
       </div></section>
 
       <section class="section"><div class="wrap">
-        <h2 class="reveal">${esc(d.econTitle)}</h2>
-        <p class="lead reveal">${esc(d.econBody)}</p>
-        <div class="kv">
-          ${d.econPoints.map((p) => `<div class="row reveal"><div class="k">${esc(p.k)}</div><div class="v">${esc(p.v)}</div></div>`).join("")}
-        </div>
-      </div></section>
-
-      <section class="section section-soft"><div class="wrap">
-        <h2 class="reveal">${esc(d.visionTitle)}</h2>
-        <p class="lead reveal">${esc(d.visionBody)}</p>
-        <div class="timeline">
-          ${d.visionSteps
-            .map((s) => `<div class="tnode reveal"><span class="phase">${esc(s.phase)}</span><h4>${esc(s.title)}</h4><p>${esc(s.body)}</p></div>`)
-            .join("")}
-        </div>
-      </div></section>
-
-      <section class="section"><div class="wrap">
-        <div class="cta-band reveal">
-          <h2>${esc(d.ctaTitle)}</h2>
-          <p>${esc(d.ctaBody)}</p>
-          <a class="btn btn-primary" href="mailto:${esc(S.email)}">${esc(t.contactCta)}</a>
-        </div>
-      </div></section>
-    </main>
-    ${footer()}`;
-  }
-
-  /* ---------- WORLD SPORT DAILY ---------- */
-  function renderWSD() {
-    const d = S.wsd[lang], t = S.ui[lang], L = S.links;
-    return `
-    ${header("wsd")}
-    <main>
-      <section class="detail-hero"><div class="wrap">
-        <a class="back" href="/">${esc(t.backHome)}</a>
-        <span class="kicker">${esc(d.kicker)}</span>
-        <h1>${esc(d.title)}</h1>
-        <p class="sub">${esc(d.sub)}</p>
-        <div class="detail-actions">
-          <a class="btn btn-primary" href="${L.wsdYouTube}" target="_blank" rel="noopener">${esc(d.ctaPrimary)}</a>
-          <a class="btn btn-ghost" href="${L.wsdInstagram}" target="_blank" rel="noopener">${esc(d.ctaSecondary)}</a>
-        </div>
-      </div></section>
-
-      <section class="section"><div class="wrap">${statGrid(d.stats)}</div></section>
-
-      <section class="section section-soft"><div class="wrap">
-        <h2 class="reveal">${esc(d.whatTitle)}</h2>
-        <p class="lead reveal">${esc(d.whatBody)}</p>
-      </div></section>
-
-      <section class="section"><div class="wrap">
-        <h2 class="reveal">${esc(d.sigTitle)}</h2>
-        <p class="lead reveal">${esc(d.sigBody)}</p>
-      </div></section>
-
-      <section class="section section-soft"><div class="wrap">
-        <h2 class="reveal">${esc(d.howTitle)}</h2>
-        <div class="steps">
-          ${d.steps
-            .map((s) => `<div class="step reveal"><div class="num">${esc(s.n)}</div><div class="body"><h4>${esc(s.t)}</h4><p>${esc(s.d)}</p></div></div>`)
-            .join("")}
-        </div>
-      </div></section>
-
-      <section class="section"><div class="wrap">
-        <h2 class="reveal">${esc(d.moatTitle)}</h2>
-        <ul class="bullets reveal">${d.moatPoints.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>
-      </div></section>
-
-      <section class="section section-soft"><div class="wrap">
-        <h2 class="reveal">${esc(d.proofTitle)}</h2>
-        <p class="lead reveal">${esc(d.proofBody)}</p>
-        <div class="linklist reveal">
-          ${d.proofLinks.map((p) => `<a href="${L[p.key]}" target="_blank" rel="noopener">${esc(p.label)}</a>`).join("")}
-        </div>
-      </div></section>
-    </main>
-    ${footer()}`;
-  }
-
-  /* ---------- OSTOMYFAN ---------- */
-  function renderOsto() {
-    const d = S.osto[lang], t = S.ui[lang], L = S.links;
-    return `
-    ${header("osto")}
-    <main>
-      <section class="detail-hero"><div class="wrap">
-        <a class="back" href="/">${esc(t.backHome)}</a>
-        <span class="kicker">${esc(d.kicker)}</span>
-        <h1>${esc(d.title)}</h1>
-        <p class="sub">${esc(d.sub)}</p>
-        <div class="detail-actions">
-          <a class="btn btn-primary" href="${L.ostomyfanSite}" target="_blank" rel="noopener">${esc(d.ctaPrimary)}</a>
-        </div>
-      </div></section>
-
-      <section class="section"><div class="wrap">${statGrid(d.stats)}</div></section>
-
-      <section class="section section-soft"><div class="wrap">
-        <h2 class="reveal">${esc(d.whatTitle)}</h2>
-        <p class="lead reveal">${esc(d.whatBody)}</p>
-      </div></section>
-
-      <section class="section"><div class="wrap">
+        <span class="eyebrow reveal">${lang === "tr" ? "Değer" : "Value"}</span>
         <h2 class="reveal">${esc(d.whyTitle)}</h2>
         <p class="lead reveal">${esc(d.whyBody)}</p>
-      </div></section>
-
-      <section class="section section-soft"><div class="wrap">
-        <h2 class="reveal">${esc(d.strengthsTitle)}</h2>
-        <div class="grid grid-2">
-          ${d.strengths.map((s) => `<div class="card reveal"><h3>${esc(s.t)}</h3><p>${esc(s.d)}</p></div>`).join("")}
+        <div class="kv reveal">
+          ${d.whyPoints.map((p) => `<div class="row"><div class="k">${esc(p.k)}</div><div class="v">${esc(p.v)}</div></div>`).join("")}
         </div>
       </div></section>
 
-      <section class="section"><div class="wrap">
+      <section class="cta-band"><div class="wrap reveal">
+        <h2>${esc(d.ctaTitle)}</h2>
+        <p>${esc(d.ctaBody)}</p>
+        <a class="btn btn-primary" href="mailto:${esc(S.email)}">${esc(t.contactCta)}</a>
+      </div></section>
+    </main>
+    ${footer()}`;
+  }
+
+  /* ---------- PROJE DETAY (wsd / osto / dreamercell — tek şablon) ---------- */
+  function renderProject(key) {
+    const p = S[key], d = p[lang], a = S.assets[p.assetKey], t = S.ui[lang], L = S.links;
+    const primaryHref = L[d.proofLinks[0].key];
+    const secondary = d.proofLinks[1];
+    const actions = `
+      <a class="btn btn-primary" href="${primaryHref}" target="_blank" rel="noopener">${esc(d.ctaPrimary)}</a>
+      ${d.ctaSecondary && secondary ? `<a class="btn btn-ghost" href="${L[secondary.key]}" target="_blank" rel="noopener">${esc(d.ctaSecondary)}</a>` : ""}`;
+    return `
+    ${header(key)}
+    <main>
+      <section class="detail-hero"><div class="wrap">
+        <a class="back" href="/">${esc(t.backHome)}</a>
+        <div class="detail-banner"><img src="${a.banner}" alt="${esc(d.title)} banner" /></div>
+        <div class="detail-head">
+          <img class="detail-avatar" src="${a.avatar}" alt="${esc(d.title)}" />
+          <div class="detail-titles">
+            <span class="kicker">${esc(d.kicker)}</span>
+            <h1>${esc(d.title)}</h1>
+          </div>
+        </div>
+        <p class="sub">${esc(d.sub)}</p>
+        <div class="detail-actions">${actions}</div>
+      </div></section>
+
+      <section class="detail-section"><div class="wrap">
+        <h2 class="reveal">${esc(d.whatTitle)}</h2>
+        <p class="lead reveal">${esc(d.whatBody)}</p>
+      </div></section>
+
+      <section class="detail-section"><div class="wrap">
+        <h2 class="reveal">${esc(d.highlightsTitle)}</h2>
+        <div class="highlights reveal">
+          ${d.highlights.map((h) => `<div class="hl"><h4>${esc(h.t)}</h4><p>${esc(h.d)}</p></div>`).join("")}
+        </div>
+      </div></section>
+
+      <section class="detail-section"><div class="wrap">
         <h2 class="reveal">${esc(d.proofTitle)}</h2>
-        <p class="lead reveal">${esc(d.proofBody)}</p>
         <div class="linklist reveal">
-          ${d.proofLinks.map((p) => `<a href="${L[p.key]}" target="_blank" rel="noopener">${esc(p.label)}</a>`).join("")}
+          ${d.proofLinks.map((x) => `<a href="${L[x.key]}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join("")}
         </div>
       </div></section>
     </main>
     ${footer()}`;
   }
 
-  const RENDERERS = { home: renderHome, wsd: renderWSD, osto: renderOsto };
+  const RENDERERS = {
+    home: renderHome,
+    wsd: () => renderProject("wsd"),
+    osto: () => renderProject("osto"),
+    dreamercell: () => renderProject("dreamercell"),
+  };
 
   function render() {
     const page = document.body.dataset.page || "home";
@@ -255,9 +191,7 @@
   }
 
   function wire() {
-    document.querySelectorAll("[data-lang]").forEach((b) =>
-      b.addEventListener("click", () => setLang(b.dataset.lang))
-    );
+    document.querySelectorAll("[data-lang]").forEach((b) => b.addEventListener("click", () => setLang(b.dataset.lang)));
     const toggle = document.querySelector("[data-toggle]");
     if (toggle) toggle.addEventListener("click", () => document.getElementById("navlinks").classList.toggle("open"));
   }
@@ -267,7 +201,7 @@
     if (!("IntersectionObserver" in window)) { els.forEach((e) => e.classList.add("in")); return; }
     const io = new IntersectionObserver(
       (entries) => entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }),
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
     els.forEach((e) => io.observe(e));
   }
