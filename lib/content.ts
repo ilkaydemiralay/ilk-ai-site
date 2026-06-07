@@ -5,7 +5,7 @@ export type Lang = "tr" | "en";
 
 export const SITE = {
   brand: "ilk.ai",
-  email: "ilkay@demiralay.net",
+  email: "info@ilk.ai",
   year: 2026,
 };
 

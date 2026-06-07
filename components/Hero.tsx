@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { useLang } from "@/lib/i18n";
 import { HOME, PROJECTS, ASSETS, PROJECT_ORDER, SLUG } from "@/lib/content";
+import { HeroAnimation } from "./HeroAnimation";
 
 function highlight(text: string, word: string) {
   const i = text.indexOf(word);
@@ -24,8 +25,9 @@ export function Hero() {
   const accentWord = lang === "tr" ? "yapay zeka" : "AI";
 
   return (
-    <section className="mx-auto max-w-6xl px-6 pt-20 pb-16 md:pt-28 md:pb-24">
-      <div className="grid items-center gap-12 lg:grid-cols-12">
+    <section className="relative overflow-hidden">
+      <HeroAnimation />
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 pt-20 pb-16 md:pt-28 md:pb-24 lg:grid-cols-12">
         <motion.div
           className="lg:col-span-7"
           initial={{ opacity: 0, y: 22 }}

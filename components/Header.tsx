@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 
@@ -18,8 +17,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 glass border-b border-line">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link href="/" aria-label="ilk.ai" className="flex items-center">
-          <Image src="/img/logo-dark.png" alt="ilk.ai" width={120} height={36} className="h-9 w-auto" priority />
+        <Link href="/" aria-label="ilk.ai" className="font-display text-xl font-extrabold tracking-tight text-ink">
+          ilk<span className="text-accent">.ai</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
