@@ -2,6 +2,9 @@
    Kurallar: maliyet/birim ekonomisi YOK; işleyiş yüzeysel (üretim yöntemi ifşa edilmez). */
 
 export type Lang = "tr" | "en";
+// Desteklenen diller. Yeni dil eklemek için: bu listeye kod ekle + aşağıdaki
+// UI/HOME/PROJECTS sözlüklerine aynı kodla çeviri ekle.
+export const LANGS: Lang[] = ["tr", "en"];
 
 export const SITE = {
   brand: "ilk.ai",
@@ -81,6 +84,29 @@ export const HOME = {
     ],
     ctaTitle: "Markanızı konuşalım",
     ctaBody: "İş birliği, ortaklık veya bir pilot proje için bize ulaşın.",
+    ctaPoints: ["Markaya özel içerik dünyası", "Düzenli ve tutarlı yayın", "Tek elden üretim + dağıtım"],
+
+    statsEyebrow: "Sürekli üretim",
+    statsTitle: "Her gün dönen bir yayın motoru",
+    stats: [
+      { v: "3", l: "Canlı marka" },
+      { v: "3", l: "Yayın platformu" },
+      { v: "Günlük", l: "Yeni içerik" },
+      { v: "7/24", l: "Otomatik akış" },
+    ],
+    platformsTitle: "Markalarımızın yayınlandığı yerler",
+    platforms: ["YouTube", "Instagram", "TikTok", "ve dahası"],
+
+    faqEyebrow: "SSS",
+    faqTitle: "Sık sorulan sorular",
+    faq: [
+      { q: "İçeriği siz mi üretiyorsunuz?", a: "Evet. Fikirden yayına kadar tüm süreci biz yürütüyoruz; siz sadece onaylıyorsunuz." },
+      { q: "Hangi platformlarda yayın yapıyorsunuz?", a: "YouTube, Instagram ve TikTok başta olmak üzere markanıza uygun kanallarda." },
+      { q: "Ne kadar sürede başlarız?", a: "Marka kurulumu (kimlik, format, takvim) kısa sürer; ardından düzenli yayına geçeriz." },
+      { q: "Üretilen içerik bize mi ait?", a: "Evet. Markanız için ürettiğimiz her şey size aittir." },
+      { q: "Sadece üretim mi, yayın da dahil mi?", a: "İkisi de. Üretim, çok platformlu yayın ve takip tek elden bizde." },
+      { q: "Hangi tür markalarla çalışıyorsunuz?", a: "Niş otoriteden spora ve müziğe; canlı portföyümüz çalışma tarzımızın örneğidir." },
+    ],
   },
   en: {
     heroKicker: "ilk.ai · AI content studio",
@@ -111,6 +137,29 @@ export const HOME = {
     ],
     ctaTitle: "Let's talk about your brand",
     ctaBody: "Reach out for collaboration, partnership, or a pilot project.",
+    ctaPoints: ["A content world built for your brand", "Steady, consistent publishing", "Production + distribution, one hand"],
+
+    statsEyebrow: "Always producing",
+    statsTitle: "A publishing engine that runs every day",
+    stats: [
+      { v: "3", l: "Live brands" },
+      { v: "3", l: "Platforms" },
+      { v: "Daily", l: "New content" },
+      { v: "24/7", l: "Automated flow" },
+    ],
+    platformsTitle: "Where our brands publish",
+    platforms: ["YouTube", "Instagram", "TikTok", "and more"],
+
+    faqEyebrow: "FAQ",
+    faqTitle: "Frequently asked questions",
+    faq: [
+      { q: "Do you produce the content yourselves?", a: "Yes. We run the whole journey from idea to publishing; you simply approve." },
+      { q: "Which platforms do you publish on?", a: "YouTube, Instagram and TikTok first, plus whatever channels fit your brand." },
+      { q: "How fast can we start?", a: "Brand setup (identity, format, calendar) is quick; then we move to steady publishing." },
+      { q: "Do we own the content?", a: "Yes. Everything we produce for your brand belongs to you." },
+      { q: "Is it just production, or publishing too?", a: "Both. Production, multi-platform publishing and follow-through, all in one hand." },
+      { q: "What kind of brands do you work with?", a: "From niche authority to sports and music; our live portfolio shows how we work." },
+    ],
   },
 };
 

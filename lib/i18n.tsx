@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { UI, type Lang } from "./content";
+import { UI, LANGS, type Lang } from "./content";
 
 type Ctx = { lang: Lang; setLang: (l: Lang) => void; toggle: () => void; t: (typeof UI)["tr"] };
 const LangContext = createContext<Ctx | null>(null);
@@ -9,10 +9,11 @@ const LangContext = createContext<Ctx | null>(null);
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("tr");
 
+  // Varsayılan dil TR. Yalnızca kullanıcı daha önce dil seçtiyse onu uygula.
+  // Yeni dil eklemek için: content.ts'teki sözlüklere dil kodu ekle + LANGS'a dahil et.
   useEffect(() => {
     const saved = (typeof localStorage !== "undefined" && localStorage.getItem("ilkai_lang")) as Lang | null;
-    if (saved === "tr" || saved === "en") setLangState(saved);
-    else if (typeof navigator !== "undefined" && navigator.language.toLowerCase().startsWith("en")) setLangState("en");
+    if (saved && LANGS.includes(saved)) setLangState(saved);
   }, []);
 
   useEffect(() => {
