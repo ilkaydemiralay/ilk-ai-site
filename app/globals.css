@@ -15,12 +15,35 @@
   --color-accent: #4f46e5;      /* indigo-600 */
   --color-accent-deep: #4338ca; /* indigo-700 */
   --color-accent-wash: #eef2ff; /* indigo-50 */
+
+  /* Koyu sinematik hero zemini */
+  --color-night: #0a0a12;       /* hero arka plan tabanı */
+  --color-night-2: #12101f;     /* hafif mor ton */
 }
 
 @layer base {
   html { scroll-behavior: smooth; }
   body {
-    background: var(--color-paper);
+    background-color: var(--color-paper);
+    /* Tüm sayfa boyunca tek akışkan gradyan: üstte hero aurora ipuçları,
+       aşağı doğru yumuşak pastel ton geçişleri. Bölümler şeffaf, akış sürekli. */
+    background-image:
+      radial-gradient(46% 26% at 16% 5%, rgba(99,102,241,.18), transparent 60%),
+      radial-gradient(42% 22% at 86% 9%, rgba(236,72,153,.13), transparent 60%),
+      radial-gradient(48% 28% at 62% 20%, rgba(56,189,248,.13), transparent 62%),
+      radial-gradient(55% 22% at 12% 44%, rgba(139,92,246,.10), transparent 64%),
+      radial-gradient(55% 22% at 90% 62%, rgba(56,189,248,.10), transparent 64%),
+      radial-gradient(60% 20% at 50% 82%, rgba(99,102,241,.09), transparent 66%),
+      linear-gradient(180deg,
+        #ffffff 0%,
+        #f6f4ff 14%,
+        #f8f7fc 30%,
+        #fcf2f9 48%,
+        #eef8ff 66%,
+        #f5f1ff 84%,
+        #eeeef5 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     color: var(--color-ink);
     font-family: var(--font-sans), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -39,6 +62,29 @@
   .shadow-soft { box-shadow: 0 1px 2px rgba(24,24,27,.04), 0 8px 30px rgba(24,24,27,.06); }
   .shadow-soft-lg { box-shadow: 0 2px 4px rgba(24,24,27,.05), 0 18px 50px -20px rgba(24,24,27,.18); }
   .glow-accent { box-shadow: 0 0 0 1px rgba(79,70,229,.12), 0 20px 60px -28px rgba(79,70,229,.45); }
+
+  /* Açık havadar hero zemini — beyaza yakın, hafif renkli ışık ipuçları */
+  .bg-hero-day {
+    background:
+      radial-gradient(60% 55% at 18% 12%, rgba(99,102,241,.12), transparent 62%),
+      radial-gradient(55% 50% at 85% 22%, rgba(236,72,153,.09), transparent 62%),
+      radial-gradient(60% 60% at 60% 95%, rgba(56,189,248,.10), transparent 62%),
+      linear-gradient(180deg, #ffffff, var(--color-paper));
+  }
+  /* Koyu sinematik hero zemini — derin mor/indigo radial katmanlar */
+  .bg-hero-night {
+    background:
+      radial-gradient(60% 55% at 20% 15%, rgba(79,70,229,.30), transparent 60%),
+      radial-gradient(55% 50% at 85% 25%, rgba(236,72,153,.20), transparent 60%),
+      radial-gradient(60% 60% at 60% 90%, rgba(56,189,248,.18), transparent 60%),
+      linear-gradient(180deg, var(--color-night-2), var(--color-night));
+  }
+  /* Bölüm başlarında çok düşük opaklıkta renkli akış devamlılığı */
+  .aurora-glow {
+    background:
+      radial-gradient(50% 60% at 15% 0%, rgba(79,70,229,.10), transparent 70%),
+      radial-gradient(45% 55% at 85% 0%, rgba(168,85,247,.08), transparent 70%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

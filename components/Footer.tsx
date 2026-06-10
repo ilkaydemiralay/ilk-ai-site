@@ -6,7 +6,7 @@ import { SITE } from "@/lib/content";
 export function Footer() {
   const { t } = useLang();
   return (
-    <footer id="contact" className="mt-auto border-t border-line bg-paper-2">
+    <footer id="contact" className="mt-auto border-t border-line/60">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 sm:flex-row sm:items-end sm:justify-between">
         <div className="flex flex-col gap-3">
           <span className="font-display text-2xl font-extrabold tracking-tight text-ink">

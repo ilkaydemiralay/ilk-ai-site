@@ -50,8 +50,8 @@ export function StatsStrip() {
   const { lang } = useLang();
   const d = HOME[lang];
   return (
-    <section className="border-y border-line bg-paper-2">
-      <div className="mx-auto max-w-6xl px-6 py-16">
+    <section className="relative overflow-hidden">
+      <div className="relative mx-auto max-w-6xl px-6 py-16">
         <Reveal>
           <span className="text-xs font-semibold uppercase tracking-widest text-accent">{d.statsEyebrow}</span>
           <h2 className="font-display mt-3 max-w-2xl text-2xl font-bold tracking-tight text-ink md:text-3xl">{d.statsTitle}</h2>
@@ -117,7 +117,7 @@ export function Projects() {
   const { t, lang } = useLang();
   const d = HOME[lang];
   return (
-    <section id="projects" className="border-b border-line bg-paper">
+    <section id="projects" className="relative">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <SectionHead eyebrow={t.portfolio} title={d.proofTitle} lead={d.proofBody} />
         <div className="mt-12 grid gap-5 md:grid-cols-2">

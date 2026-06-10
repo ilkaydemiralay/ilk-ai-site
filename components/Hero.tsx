@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { useLang } from "@/lib/i18n";
 import { HOME, PROJECTS, ASSETS, SLUG } from "@/lib/content";
-import { HeroAnimation } from "./HeroAnimation";
+import { OrbField } from "./OrbField";
 
 function highlight(text: string, word: string) {
   const i = text.indexOf(word);
@@ -13,7 +13,9 @@ function highlight(text: string, word: string) {
   return (
     <>
       {text.slice(0, i)}
-      <span className="text-accent">{word}</span>
+      <span className="bg-gradient-to-r from-indigo-600 via-violet-500 to-sky-500 bg-clip-text text-transparent">
+        {word}
+      </span>
       {text.slice(i + word.length)}
     </>
   );
@@ -42,9 +44,10 @@ export function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden">
-      <HeroAnimation />
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 pt-16 pb-16 md:pt-24 md:pb-24 lg:grid-cols-2">
+    <section className="relative isolate overflow-hidden">
+      <OrbField fade="bottom" />
+
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 pt-16 pb-20 md:pt-24 md:pb-28 lg:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
@@ -62,7 +65,7 @@ export function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">{d.heroSub}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="#projects" className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition-all duration-300 hover:bg-accent-deep hover:shadow-soft-lg">
+            <Link href="#projects" className="glow-accent rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-accent-deep">
               {d.heroPrimary}
             </Link>
             <Link href="#contact" className="rounded-full border border-line bg-card px-6 py-3 text-sm font-semibold text-ink transition-all duration-300 hover:border-ink">
