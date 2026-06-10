@@ -15,10 +15,6 @@ export const metadata: Metadata = {
   title: "ilk.ai — AI content studio for brands",
   description:
     "ilk.ai is an AI studio that builds content for brands. We run the whole process from idea to publishing. 3 brands live.",
-  icons: {
-    icon: "/img/favicon.png",
-    apple: "/img/apple-touch-icon.png",
-  },
   openGraph: {
     title: "ilk.ai — AI content studio for brands",
     description: "An AI studio that builds content for brands. From idea to publishing. 3 brands live.",

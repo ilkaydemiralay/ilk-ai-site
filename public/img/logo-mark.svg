@@ -1,0 +1,5 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ilk.ai">
+  <circle cx="50" cy="50" r="13" fill="#4f46e5"/>
+  <path d="M 63.285 18.703 A 34 34 0 0 1 63.285 81.297" fill="none" stroke="#18181b" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 36.715 81.297 A 34 34 0 0 1 36.715 18.703" fill="none" stroke="#18181b" stroke-width="5" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg viewBox="0 0 340 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ilk.ai">
+  <g>
+    <circle cx="50" cy="50" r="13" fill="#4f46e5"/>
+    <path d="M 63.285 18.703 A 34 34 0 0 1 63.285 81.297" fill="none" stroke="#52525b" stroke-width="5" stroke-linecap="round"/>
+    <path d="M 36.715 81.297 A 34 34 0 0 1 36.715 18.703" fill="none" stroke="#52525b" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <text x="116" y="69" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="58" letter-spacing="-1.5">
+    <tspan fill="#18181b">ilk</tspan><tspan fill="#4f46e5">.ai</tspan>
+  </text>
+</svg>

@@ -2,6 +2,7 @@
 
 import { useLang } from "@/lib/i18n";
 import { SITE } from "@/lib/content";
+import { LogoMark } from "./LogoMark";
 
 export function Footer() {
   const { t } = useLang();
@@ -9,8 +10,11 @@ export function Footer() {
     <footer id="contact" className="mt-auto border-t border-line/60">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 sm:flex-row sm:items-end sm:justify-between">
         <div className="flex flex-col gap-3">
-          <span className="font-display text-2xl font-extrabold tracking-tight text-ink">
-            ilk<span className="text-accent">.ai</span>
+          <span className="inline-flex items-center gap-2.5">
+            <LogoMark className="h-7 w-7 shrink-0 text-ink-soft" accent title="ilk.ai" />
+            <span className="font-display text-2xl font-extrabold tracking-tight text-ink">
+              ilk<span className="text-accent">.ai</span>
+            </span>
           </span>
           <p className="max-w-xs text-sm text-ink-soft">{t.footerTag}</p>
         </div>
