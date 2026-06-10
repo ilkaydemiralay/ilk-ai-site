@@ -12,9 +12,9 @@ const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ilk.ai"),
-  title: "ilk.ai — Markalar için yapay zeka içerik stüdyosu",
+  title: "ilk.ai — AI content studio for brands",
   description:
-    "ilk.ai, markalar için içerik üreten bir yapay zeka stüdyosu. Fikirden yayına kadar tüm süreci biz yürütüyoruz. 3 marka canlı.",
+    "ilk.ai is an AI studio that builds content for brands. We run the whole process from idea to publishing. 3 brands live.",
   icons: {
     icon: "/img/favicon.png",
     apple: "/img/apple-touch-icon.png",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr" className={`${jakarta.variable} ${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${jakarta.variable} ${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <LanguageProvider>{children}</LanguageProvider>
       </body>

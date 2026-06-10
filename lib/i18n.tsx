@@ -7,9 +7,9 @@ type Ctx = { lang: Lang; setLang: (l: Lang) => void; toggle: () => void; t: (typ
 const LangContext = createContext<Ctx | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("tr");
+  const [lang, setLangState] = useState<Lang>("en");
 
-  // Varsayılan dil TR. Yalnızca kullanıcı daha önce dil seçtiyse onu uygula.
+  // Varsayılan dil EN. Yalnızca kullanıcı daha önce dil seçtiyse onu uygula.
   // Yeni dil eklemek için: content.ts'teki sözlüklere dil kodu ekle + LANGS'a dahil et.
   useEffect(() => {
     const saved = (typeof localStorage !== "undefined" && localStorage.getItem("ilkai_lang")) as Lang | null;
