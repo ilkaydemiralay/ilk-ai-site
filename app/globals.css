@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: var(--font-jakarta);
+  --font-display: var(--font-display-src);
   --font-sans: var(--font-inter);
 
   /* Açık premium palet — sofistike nötr + indigo accent */

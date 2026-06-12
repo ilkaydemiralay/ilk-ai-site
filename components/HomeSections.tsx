@@ -11,7 +11,7 @@ function SectionHead({ eyebrow, title, lead, center }: { eyebrow: string; title:
     <Reveal className={center ? "text-center" : ""}>
       <span className="text-xs font-semibold uppercase tracking-widest text-accent">{eyebrow}</span>
       <h2 className={`font-display mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl ${center ? "mx-auto max-w-3xl" : "max-w-2xl"}`}>{title}</h2>
-      {lead && <p className={`mt-4 text-lg text-ink-soft ${center ? "mx-auto max-w-2xl" : "max-w-2xl"}`}>{lead}</p>}
+      {lead && <p className={`mt-4 text-lg text-ink-soft [text-wrap:pretty] ${center ? "mx-auto max-w-2xl" : "max-w-2xl"}`}>{lead}</p>}
     </Reveal>
   );
 }
@@ -135,7 +135,7 @@ export function Why() {
   const d = HOME[lang];
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
-      <SectionHead eyebrow={t.value} title={d.whyTitle} lead={d.whyBody} />
+      <SectionHead center eyebrow={t.value} title={d.whyTitle} lead={d.whyBody} />
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {d.whyPoints.map((p, i) => {
           const accent = i === 0;

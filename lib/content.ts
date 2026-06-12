@@ -73,9 +73,9 @@ export const HOME = {
     ],
     proofTitle: "Canlı projeler",
     proofBody: "Üç marka şu anda bizim yürüttüğümüz akışla üretimde ve yayında.",
-    whyTitle: "Neden ilk.ai",
+    whyTitle: "Neden Biz",
     whyBody:
-      "Çoğu marka içerikte tıkanır: zaman yok, tutarlılık yok, ekip pahalı. Biz bunu bir sisteme çeviriyoruz. Aldığınız şey ucuz içerik değil; markanızı her gün besleyen, ölçeklenebilen ve sizi düşündürmeyen bir yayın motoru.",
+      "Çoğu marka içerikte tıkanır: zaman yok, tutarlılık yok, ekip pahalı. Biz bunu bir sisteme çeviriyoruz. Aradığınız hizmet ucuz içerik değil; markanızı her gün besleyen, ölçeklenebilen ve sizi düşündürmeyen bir yayın motoru.",
     whyPoints: [
       { k: "Tutarlılık", v: "Marka her gün, aynı kalitede sahnede." },
       { k: "Hız", v: "Haftalar süren süreç günlere iner." },
@@ -126,9 +126,9 @@ export const HOME = {
     ],
     proofTitle: "Live projects",
     proofBody: "Three brands are producing and publishing right now through the flow we run.",
-    whyTitle: "Why ilk.ai",
+    whyTitle: "Why Us",
     whyBody:
-      "Most brands stall on content: no time, no consistency, teams are expensive. We turn it into a system. What you get isn't cheap content, it's a publishing engine that feeds your brand every day, scales, and never makes you think about it.",
+      "Most brands stall on content: no time, no consistency, teams are expensive. We turn it into a system. The service you're looking for isn't cheap content, it's a publishing engine that feeds your brand every day, scales, and never makes you think about it.",
     whyPoints: [
       { k: "Consistency", v: "Your brand on stage every day, same quality." },
       { k: "Speed", v: "What takes weeks now takes days." },
