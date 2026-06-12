@@ -138,12 +138,12 @@ export function Why() {
       <SectionHead center eyebrow={t.value} title={d.whyTitle} lead={d.whyBody} />
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {d.whyPoints.map((p, i) => {
-          const accent = i === 0;
+          const tint = ["vt-indigo", "vt-violet", "vt-sky", "vt-rose"][i % 4];
           return (
             <Reveal key={i} delay={i * 0.07}>
-              <div className={`h-full rounded-3xl p-7 transition-all duration-300 hover:-translate-y-1 ${accent ? "bg-accent text-white glow-accent" : "border border-line bg-card shadow-soft hover:shadow-soft-lg"}`}>
-                <h3 className={`font-display text-lg font-bold ${accent ? "text-white" : "text-ink"}`}>{p.k}</h3>
-                <p className={`mt-2 text-[15px] leading-relaxed ${accent ? "text-indigo-100" : "text-ink-soft"}`}>{p.v}</p>
+              <div className={`value-tile ${tint} h-full rounded-3xl p-7 transition-all duration-300 hover:-translate-y-1`}>
+                <h3 className="font-display text-lg font-bold text-ink">{p.k}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{p.v}</p>
               </div>
             </Reveal>
           );
