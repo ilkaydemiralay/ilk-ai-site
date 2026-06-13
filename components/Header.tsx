@@ -6,9 +6,8 @@ import { useLang } from "@/lib/i18n";
 import { Logo } from "./Logo";
 
 export function Header() {
-  const { t, toggle, lang } = useLang();
+  const { t } = useLang();
   const [open, setOpen] = useState(false);
-  const other = lang === "tr" ? "EN" : "TR";
 
   const links = [
     { href: "/#projects", label: t.nav.projects },
@@ -28,12 +27,6 @@ export function Header() {
               {l.label}
             </Link>
           ))}
-          <button
-            onClick={toggle}
-            className="rounded-full border border-line px-3.5 py-1.5 text-xs font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
-          >
-            {other}
-          </button>
         </nav>
 
         <button className="md:hidden text-2xl leading-none" aria-label="Menu" onClick={() => setOpen((v) => !v)}>
@@ -49,9 +42,6 @@ export function Header() {
                 {l.label}
               </Link>
             ))}
-            <button onClick={() => { toggle(); setOpen(false); }} className="self-start rounded-full border border-line px-3.5 py-1.5 text-xs font-semibold">
-              {other}
-            </button>
           </div>
         </div>
       )}
